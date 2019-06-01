@@ -39,7 +39,7 @@ https://github.com/tetreault/nuxt-threejs-webgl-experiments
 ### npm scripts
 ```text
 "scripts": {
-  "dev": "node_modules/.bin/eslint --fix --ext .js,.vue --ignore-path .gitignore . && nuxt",
+  "dev": "eslint --fix --ext .js,.vue --ignore-path .gitignore . && nuxt",
   "build": "nuxt build",
   "start": "nuxt start",
   "generate": "nuxt generate",
