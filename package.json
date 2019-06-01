@@ -16,8 +16,7 @@
   "dependencies": {
     "cross-env": "^5.2.0",
     "nuxt": "^2.4.0",
-    "three": "^0.105.1",
-    "three-full": "^17.1.0"
+    "three": "^0.105.1"
   },
   "devDependencies": {
     "nodemon": "^1.18.9",

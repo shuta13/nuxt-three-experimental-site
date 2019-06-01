@@ -1,16 +1,14 @@
 <template>
   <section class="section">
-    <div class="hero is-fullheight">
-      <div
-        id="three-element"
-        ref="threeElement"
-      />
-    </div>
+    <div
+      id="three-element"
+      ref="threeElement"
+    />
   </section>
 </template>
 
 <script>
-import * as THREE from 'three-full'
+import * as THREE from 'three'
 
 export default {
   components: {},
@@ -20,7 +18,7 @@ export default {
       camera: undefined,
       renderer: undefined,
       started: false,
-      trackballControls: undefined,
+      // trackballControls: undefined,
       clock: undefined
     }
   },
@@ -29,7 +27,7 @@ export default {
     this.addLight()
     this.positionCamera()
     this.setupClock()
-    this.setupTrackballControls()
+    // this.setupTrackballControls()
     this.bindWindowEvents()
     this.$refs.threeElement.appendChild(this.renderer.domElement)
     this.startScene()
@@ -75,13 +73,13 @@ export default {
     setupClock() {
       this.clock = new THREE.Clock()
     },
-    setupTrackballControls() {
-      this.trackballControls = new THREE.TrackballControls(
-        this.camera,
-        document
-      )
-      this.trackballControls.rotateSpeed = 1.7
-    },
+    // setupTrackballControls() {
+    //   this.trackballControls = new THREE.TrackballControls(
+    //     this.camera,
+    //     document
+    //   )
+    //   this.trackballControls.rotateSpeed = 1.7
+    // },
     /* textures, geometries, meshes */
     createLine() {
       const lineMaterial = new THREE.LineBasicMaterial({
@@ -130,7 +128,7 @@ export default {
     },
     renderScene() {
       this.createLine()
-      this.trackballControls.update(this.clock.getDelta())
+      // this.trackballControls.update(this.clock.getDelta())
       this.renderer.render(this.scene, this.camera)
       window.RAF = requestAnimationFrame(this.renderScene)
     },
