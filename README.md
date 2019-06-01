@@ -1,22 +1,51 @@
 # nuxt-three-sample
-
-> nuxt &amp; three sample for practice
-
-## Build Setup
-
-``` bash
-# install dependencies
-$ npm install
-
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm start
-
-# generate static project
-$ npm run generate
+nuxt + threeのボイラープレート的なもの
+### 参考
+https://github.com/tetreault/nuxt-threejs-webgl-experiments
+### ディレクトリ構成(ほぼnuxtまんま)
+```text
+├── README.md
+├── assets
+│   └── README.md
+├── components
+│   ├── Hoge.vue // threejsのコード入りコンポーネント
+│   ├── Logo.vue
+│   └── README.md
+├── jest.config.js
+├── layouts
+│   ├── README.md
+│   └── default.vue
+├── middleware
+│   └── README.md
+├── nuxt.config.js
+├── package-lock.json
+├── package.json
+├── pages
+│   ├── README.md
+│   // ディレクトリ名=routeになるように切る
+│   ├── demo
+│   │   └── index.vue // components内を読み込む
+│   └── index.vue
+├── plugins
+│   └── README.md
+├── static
+│   ├── README.md
+│   └── favicon.ico
+├── store
+│   └── README.md
+└── test
+    └── Logo.spec.js
 ```
-
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+### npm scripts
+```text
+"scripts": {
+  "dev": "node_modules/.bin/eslint --fix --ext .js,.vue --ignore-path .gitignore . && nuxt",
+  "build": "nuxt build",
+  "start": "nuxt start",
+  "generate": "nuxt generate",
+  "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+  "precommit": "npm run lint",
+  "test": "jest",
+  "tree": "tree -I node_modules"
+}
+```
