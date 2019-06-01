@@ -18,7 +18,6 @@ export default {
       camera: undefined,
       renderer: undefined,
       started: false,
-      // trackballControls: undefined,
       clock: undefined
     }
   },
@@ -27,7 +26,6 @@ export default {
     this.addLight()
     this.positionCamera()
     this.setupClock()
-    // this.setupTrackballControls()
     this.bindWindowEvents()
     this.$refs.threeElement.appendChild(this.renderer.domElement)
     this.startScene()
@@ -73,13 +71,6 @@ export default {
     setupClock() {
       this.clock = new THREE.Clock()
     },
-    // setupTrackballControls() {
-    //   this.trackballControls = new THREE.TrackballControls(
-    //     this.camera,
-    //     document
-    //   )
-    //   this.trackballControls.rotateSpeed = 1.7
-    // },
     /* textures, geometries, meshes */
     createLine() {
       const lineMaterial = new THREE.LineBasicMaterial({
@@ -128,7 +119,6 @@ export default {
     },
     renderScene() {
       this.createLine()
-      // this.trackballControls.update(this.clock.getDelta())
       this.renderer.render(this.scene, this.camera)
       window.RAF = requestAnimationFrame(this.renderScene)
     },
@@ -178,20 +168,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-button {
-  position: absolute;
-  top: 10px;
-  left: 0;
-  right: 0;
-  margin: auto;
-  display: block;
-  width: 80px;
-  background: red;
-  color: white;
-  border-color: transparent;
-  border-radius: 10px;
-  outline: unset;
-}
-</style>
