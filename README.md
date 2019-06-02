@@ -1,5 +1,5 @@
 # nuxt-three-sample
-nuxt + threeのボイラープレート的なもの
+nuxt + threeのテンプレート的なもの
 ### 参考
 https://github.com/tetreault/nuxt-threejs-webgl-experiments
 ### ディレクトリ構成(ほぼnuxtまんま)
