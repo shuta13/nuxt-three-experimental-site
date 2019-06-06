@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import ALine from '~/components/ALine.vue'
+import ALine from '~/components/ALine'
 
 export default {
   components: {
