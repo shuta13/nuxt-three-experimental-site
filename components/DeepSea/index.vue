@@ -39,16 +39,16 @@ export default {
         3000
       )
       this.renderer = new THREE.WebGLRenderer({ antialias: true })
-      this.renderer.setClearColor(new THREE.Color(0x000000))
+      this.renderer.setClearColor(new THREE.Color(0x222222))
       this.renderer.setSize(window.innerWidth, window.innerHeight)
-      this.renderer.shadowMap.enabled = true
-      this.renderer.shadowMapSoft = true
-      this.renderer.shadowMap.type = THREE.PCFSoftShadowMap
+      // this.renderer.shadowMap.enabled = true
+      // this.renderer.shadowMapSoft = true
+      // this.renderer.shadowMap.type = THREE.PCFSoftShadowMap
     },
 
     configScene() {
       // add spotlight and ambient light
-      const spotLight = new THREE.DirectionalLight(0xffffff)
+      const spotLight = new THREE.DirectionalLight(0x000000)
       spotLight.position.set(-40, 60, -10)
       spotLight.shadow.mapSize = new THREE.Vector2(1024, 1024)
       spotLight.shadow.camera.far = 100
@@ -61,7 +61,7 @@ export default {
       const ambientLight = new THREE.AmbientLight(0x3c3c3c)
       this.scene.add(ambientLight)
 
-      const fogColor = (0, 0, 255)
+      const fogColor = (255, 255, 255, 240)
       this.scene.fog = new THREE.FogExp2(fogColor, 0.0008)
     },
 
@@ -83,7 +83,7 @@ export default {
 
       for (let i = 0; i < 8; i++) {
         const particleSize = Math.random(60)
-        const particleColor = (255, 255, 255, 70)
+        const particleColor = (255, 255, 255, 20)
         const material = new THREE.ParticleBasicMaterial({
           size: particleSize * 100,
           color: particleColor
@@ -109,7 +109,7 @@ export default {
       window.RAF = requestAnimationFrame(this.renderScene)
 
       for (let i = 0; i < this.scene.children.length; i++) {
-        const positionNoise = Math.random(100)
+        const positionNoise = Math.sin(i * 100)
         const wholeObj = this.scene.children[i]
         wholeObj.rotation.y += (0.0015 * positionNoise)
         wholeObj.rotation.x += (0.0015 * positionNoise)

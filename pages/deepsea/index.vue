@@ -1,17 +1,17 @@
 <template>
   <section class="container">
     <div>
-      <star-dust />
+      <deep-sea />
     </div>
   </section>
 </template>
 
 <script>
-import StarDust from '~/components/StarDust'
+import DeepSea from '~/components/DeepSea'
 
 export default {
   components: {
-    StarDust
+    DeepSea
   }
 }
 </script>
