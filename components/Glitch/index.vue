@@ -92,7 +92,9 @@ export default {
       this.renderPass = new RenderPass(this.scene, this.camera)
       this.composer.addPass(this.renderPass)
       
-      this.effectGlitch = new GlitchPass(2)
+      this.effectGlitch = new GlitchPass(64)
+      // trueになるとワイルドになる
+      // this.effectGlitch.goWild = true
       this.effectGlitch.renderToScreen = true
 
       this.composer.addPass(this.effectGlitch)
