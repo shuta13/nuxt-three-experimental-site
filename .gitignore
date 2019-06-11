@@ -82,3 +82,6 @@ dist
 
 # Service worker
 sw.*
+
+# 追加
+/assets/sound/*

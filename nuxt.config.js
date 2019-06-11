@@ -48,9 +48,18 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    extend(config, ctx) {
+    loaders: [{
+      test: /\.(ogg|mp3|wav|mpe?g)$/i,
+      use: 'file-loader'
+    }],
+    extend(config, { isDev, isClient }) {
+      config.module.rules.push({
+        test: /\.(ogg|mp3|wav|mpe?g)$/i,
+        use: 'file-loader',
+        exclude: /(node_modules)/
+      })
       // Run ESLint on save
-      if (ctx.isDev && ctx.isClient) {
+      if (isDev && isClient) {
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
