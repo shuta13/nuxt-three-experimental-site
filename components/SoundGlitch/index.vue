@@ -12,7 +12,6 @@
 /* eslint-disable */
 import * as THREE from 'three'
 import { EffectComposer, RenderPass, GlitchPass, MaskPass, ShaderPass, CopyShader, DigitalGlitch, BloomPass } from 'three-full'
-import Music from 'https://did0es-experimental-site.netlify.com/audio/WATEVA - Ber Zer Ker [NCS Release].mp3'
 import { Audio } from 'three'
 import axios from 'axios'
 
@@ -101,7 +100,7 @@ export default {
       
       // axiosにおきかえた
       const load = async () => {
-        await axios.get(Music, { responseType: 'arraybuffer' })
+        await axios.get('https://did0es-experimental-site.netlify.com/audio/WATEVA - Ber Zer Ker [NCS Release].mp3', { responseType: 'arraybuffer' })
         .then(res => {
           decode(res.data)
         })
