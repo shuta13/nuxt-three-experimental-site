@@ -71,6 +71,7 @@ export default {
 a {
   text-decoration: none;
   font-size: 4vw;
+  font-family: 'DM Sans';
   color: #fff;
 }
 </style>
