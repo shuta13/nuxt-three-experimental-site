@@ -17,6 +17,7 @@ export default {
     }
   },
   methods: {
+    // もうちょい短縮したい
     hoveredAline() {
       this.target = '.a-line'
       this.changeFontColor()
