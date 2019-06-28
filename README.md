@@ -1,5 +1,5 @@
 # nuxt-three-sample
-nuxt + threeのテンプレート的なもの
+👉 https://did0es-experimental-site.netlify.com
 ### 参考
 https://github.com/tetreault/nuxt-threejs-webgl-experiments
 ### ディレクトリ構成(ほぼnuxtまんま)
