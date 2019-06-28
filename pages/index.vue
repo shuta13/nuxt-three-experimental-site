@@ -1,68 +1,76 @@
-<template>
-  <section class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        nuxt-three-sample
-      </h1>
-      <h2 class="subtitle">
-        nuxt &amp; three sample for practice
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >GitHub</a>
-      </div>
-    </div>
-  </section>
+<template lang="pug">
+  .container
+    .link-wrap
+      a(href="/aline")(@mouseleave="removeFontColor")(@mouseover="hoveredAline").a-line a-line
+      a(href="/deepsea")(@mouseleave="removeFontColor")(@mouseover="hoveredDeepsea").deep-sea deep-sea
+      a(href="/glitch")(@mouseleave="removeFontColor")(@mouseover="hoveredGlitch").glitch glitch
+      a(href="/soundglitch")(@mouseleave="removeFontColor")(@mouseover="hoveredSoundglitch").sound-glitch sound-glitch
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import TweenMax from 'gsap'
 
 export default {
-  components: {
-    Logo
+  data() {
+    return {
+      target: null
+    }
+  },
+  methods: {
+    hoveredAline() {
+      this.target = '.a-line'
+      this.changeFontColor()
+    },
+    hoveredDeepsea() {
+      this.target = '.deep-sea'
+      this.changeFontColor()
+    },
+    hoveredGlitch() {
+      this.target = '.glitch'
+      this.changeFontColor()
+    },
+    hoveredSoundglitch() {
+      this.target = '.sound-glitch'
+      this.changeFontColor()
+    },
+    changeFontColor() {
+      TweenMax.to(`${this.target}`, 0.25, {
+        color: 'rgb(255, 40, 40)'
+      })
+    },
+    removeFontColor() {
+      TweenMax.to(['.a-line', '.deep-sea', '.glitch', '.sound-glitch'], 0.25, {
+        color: '#fff'
+      })
+    }
   }
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+* {
+  font-size: 62.5%;
+}
+
 .container {
-  margin: 0 auto;
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(40, 40, 40);
+}
+
+.link-wrap {
+  width: 100vw;
+  height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
+  line-height: 10vh;
 }
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+a {
+  text-decoration: none;
+  font-size: 4vw;
+  color: #fff;
 }
 </style>

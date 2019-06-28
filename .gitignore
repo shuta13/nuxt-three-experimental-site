@@ -84,4 +84,4 @@ dist
 sw.*
 
 # 追加
-/assets/sound/*
+/assets/sound/
