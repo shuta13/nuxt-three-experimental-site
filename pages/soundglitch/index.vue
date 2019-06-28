@@ -1,9 +1,6 @@
-<template>
-  <section class="container">
-    <div>
-      <sound-glitch />
-    </div>
-  </section>
+<template lang="pug">
+  .container
+    sound-glitch
 </template>
 
 <script>

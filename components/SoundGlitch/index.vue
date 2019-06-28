@@ -1,11 +1,8 @@
-<template>
-  <section class="section">
-    <div
-      id="canvas"
-      ref="canvas"
-    />
-    {{ data }}
-  </section>
+<template lang="pug">
+  .container
+    #canvas(ref="canvas")
+      .context
+        .play(@click="loadSound") play
 </template>
 
 <script>
@@ -14,7 +11,7 @@ import * as THREE from 'three'
 import { EffectComposer, RenderPass, GlitchPass, MaskPass, ShaderPass, CopyShader, DigitalGlitch, BloomPass } from 'three-full'
 import { Audio } from 'three'
 import axios from 'axios'
-// import Music from '~/assets/audio/WATEVA-BerZerKer[NCSRelease].mp3'
+import Music from '~/assets/audio/WATEVA-BerZerKer[NCSRelease].mp3'
 
 export default {
   components: {},
@@ -124,16 +121,16 @@ export default {
         })
       })
 
-      const goMad = (analyser => {
-        const bufferLength = analyser.frequencyBinCount
-        const dataArray = new Uint8Array(analyser.fftSize)
-        analyser.getByteFrequencyData(dataArray)
-        for (let i = 0; i < bufferLength; i++) {
-          if (dataArray) {
-            　
-          }
-        }
-      })
+      // const goMad = (analyser => {
+      //   const bufferLength = analyser.frequencyBinCount
+      //   const dataArray = new Uint8Array(analyser.fftSize)
+      //   analyser.getByteFrequencyData(dataArray)
+      //   for (let i = 0; i < bufferLength; i++) {
+      //     if (dataArray) {
+      //       　
+      //     }
+      //   }
+      // })
 
       // this.flag = false
   
@@ -235,7 +232,6 @@ export default {
     startScene() {
       if (this.started) return
 
-      this.loadSound()
       this.createObj()
       this.postProcessing()
       this.controlGlitch()
@@ -267,3 +263,17 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.context {
+  display: flex;
+  justify-content: center;
+}
+
+.play {
+  cursor: pointer;
+  position: fixed;
+  font-size: 2vw;
+  color: #fff;
+}
+</style>
