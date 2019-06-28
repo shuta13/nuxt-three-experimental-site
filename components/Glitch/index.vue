@@ -16,15 +16,15 @@ export default {
   components: {},
   data() {
     return {
-      scene: undefined,
-      camera: undefined,
-      object: undefined,
-      renderer: undefined,
-      composer: undefined,
-      renderPass: undefined,
-      glitchPass: undefined,
-      customPass: undefined,
-      effectGlitch: undefined,
+      scene: null,
+      camera: null,
+      object: null,
+      renderer: null,
+      composer: null,
+      renderPass: null,
+      glitchPass: null,
+      customPass: null,
+      effectGlitch: null,
       started: false
     }
   },

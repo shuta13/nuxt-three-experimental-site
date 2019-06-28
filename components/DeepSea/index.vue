@@ -14,9 +14,9 @@ export default {
   components: {},
   data() {
     return {
-      scene: undefined,
-      camera: undefined,
-      renderer: undefined,
+      scene: null,
+      camera: null,
+      renderer: null,
       started: false
     }
   },

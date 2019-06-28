@@ -14,23 +14,24 @@ import * as THREE from 'three'
 import { EffectComposer, RenderPass, GlitchPass, MaskPass, ShaderPass, CopyShader, DigitalGlitch, BloomPass } from 'three-full'
 import { Audio } from 'three'
 import axios from 'axios'
+import Music from '~/assets/audio/WATEVA-BerZerKer[NCSRelease].mp3'
 
 export default {
   components: {},
   data() {
     return {
-      data: undefined,
-      scene: undefined,
-      camera: undefined,
-      object: undefined,
-      renderer: undefined,
-      composer: undefined,
-      renderPass: undefined,
-      glitchPass: undefined,
-      customPass: undefined,
-      effectGlitch: undefined,
-      audio: undefined,
-      soundData: undefined,
+      data: null,
+      scene: null,
+      camera: null,
+      object: null,
+      renderer: null,
+      composer: null,
+      renderPass: null,
+      glitchPass: null,
+      customPass: null,
+      effectGlitch: null,
+      audio: null,
+      soundData: null,
       flag: false,
       started: false
     }
@@ -100,7 +101,7 @@ export default {
       
       // axiosにおきかえた
       const load = async () => {
-        await axios.get('https://did0es-experimental-site.netlify.com/audio/WATEVA - Ber Zer Ker [NCS Release].mp3', { responseType: 'arraybuffer' })
+        await axios.get(Music, { responseType: 'arraybuffer' })
         .then(res => {
           decode(res.data)
         })
@@ -119,7 +120,7 @@ export default {
           source.connect(context.destination)
           source.connect(analyser)
           source.start(0)
-          goMad(analyser)
+          // goMad(analyser)
         })
       })
 
