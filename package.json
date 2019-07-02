@@ -28,9 +28,11 @@
     "pug-plain-loader": "^1.0.0",
     "sass-loader": "^7.1.0",
     "three": "^0.105.1",
-    "three-full": "^17.1.0"
+    "three-full": "^17.1.0",
+    "ts-node": "^8.3.0"
   },
   "devDependencies": {
+    "@nuxt/typescript": "^2.8.1",
     "@nuxtjs/eslint-config": "^0.0.1",
     "@vue/test-utils": "^1.0.0-beta.27",
     "babel-core": "7.0.0-bridge.0",
@@ -48,6 +50,7 @@
     "eslint-plugin-vue": "^5.2.2",
     "jest": "^24.1.0",
     "nodemon": "^1.18.9",
-    "vue-jest": "^3.0.3"
+    "vue-jest": "^3.0.3",
+    "webpack-glsl-loader": "^1.0.1"
   }
 }

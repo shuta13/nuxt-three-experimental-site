@@ -11,7 +11,7 @@ import * as THREE from 'three'
 import { EffectComposer, RenderPass, GlitchPass, MaskPass, ShaderPass, CopyShader, DigitalGlitch, BloomPass } from 'three-full'
 import { Audio } from 'three'
 import axios from 'axios'
-import Music from '~/assets/audio/WATEVA-BerZerKer[NCSRelease].mp3'
+// import Music from '~/assets/audio/WATEVA-BerZerKer[NCSRelease].mp3'
 
 export default {
   components: {},

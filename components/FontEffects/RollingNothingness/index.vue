@@ -11,6 +11,11 @@ export default {
       scene: null,
       camera: null,
       renderer: null,
+      context: null,
+      canvas: null,
+      texture: null,
+      material: null,
+      geometry: null,
       started: false
     }
   },
@@ -19,7 +24,8 @@ export default {
     this.configScene()
     this.positionCamera()
     this.bindWindowEvents()
-    this.processDomElement()
+    this.appendThreeDomElement()
+    this.processToDomElement()
     this.startScene()
   },
   methods: {
@@ -49,8 +55,32 @@ export default {
     handleWindowResize() {
       this.camera.aspect = window.innerWidth / window.innerHeight
     },
-    processDomElement() {
+    appendThreeDomElement() {
       this.$refs.canvas.appendChild(this.renderer.domElement)
+    },
+    processToDomElement() {
+      this.canvas = document.createElement('canvas')
+      this.canvas.width = 512
+      this.canvas.height = 512
+      this.context = this.canvas.getContext('2d')
+      this.setPropertyOfFont()
+    },
+    setPropertyOfFont() {
+      this.context.beginPath()
+      this.context.font = 'Normal 40px Arial'
+      this.context.fillStyle = 'rbg(40, 40, 40)'
+      this.context.textAlign = 'center'
+      this.context.fillText('hoge', window.innerWidth / 2, window.innerHeight / 2)
+      this.texture = new THREE.CanvasTexture(this.canvas)
+      this.texture.needsUpdate = true
+      this.createObject()
+    },
+    createObject() {
+      this.material = new THREE.MeshBasicMaterial({ map: this.texture })
+      this.material.transparent = true
+      this.geometry = new THREE.PlaneGeometry(window.innerWidth, window.innerHeight)
+      const plane = new THREE.Mesh(this.material, this.geometry)
+      this.scene.add(plane)
     },
     startScene() {
       if (this.started) return
