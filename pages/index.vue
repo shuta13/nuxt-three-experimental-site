@@ -13,7 +13,7 @@ import TweenMax from 'gsap'
 
 @Component
 class Top extends Vue {
-  target: string
+target: string
   hoveredAline() {
     this.target = '.a-line'
     this.changeFontColor()
