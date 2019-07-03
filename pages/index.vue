@@ -14,32 +14,32 @@ import TweenMax from 'gsap'
 @Component
 class Top extends Vue {
 target: string
-  hoveredAline() {
-    this.target = '.a-line'
-    this.changeFontColor()
-  }
-  hoveredDeepsea() {
-    this.target = '.deep-sea'
-    this.changeFontColor()
-  }
-  hoveredGlitch() {
-    this.target = '.glitch'
-    this.changeFontColor()
-  }
-  hoveredSoundglitch() {
-    this.target = '.sound-glitch'
-    this.changeFontColor()
-  }
-  changeFontColor() {
-    TweenMax.to(`${this.target}`, 0.25, {
-      color: 'rgb(255, 40, 40)'
-    })
-  }
-  removeFontColor() {
-    TweenMax.to(['.a-line', '.deep-sea', '.glitch', '.sound-glitch'], 0.25, {
-      color: '#fff'
-    })
-  }
+hoveredAline() {
+  this.target = '.a-line'
+  this.changeFontColor()
+}
+hoveredDeepsea() {
+  this.target = '.deep-sea'
+  this.changeFontColor()
+}
+hoveredGlitch() {
+  this.target = '.glitch'
+  this.changeFontColor()
+}
+hoveredSoundglitch() {
+  this.target = '.sound-glitch'
+  this.changeFontColor()
+}
+changeFontColor() {
+  TweenMax.to(`${this.target}`, 0.25, {
+    color: 'rgb(255, 40, 40)'
+  })
+}
+removeFontColor() {
+  TweenMax.to(['.a-line', '.deep-sea', '.glitch', '.sound-glitch'], 0.25, {
+    color: '#fff'
+  })
+}
 }
 export default Top
 

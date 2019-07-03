@@ -1,5 +1,5 @@
-import pkg from './package.json'
 import NuxtConfiguration from '@nuxt/config'
+import pkg from './package.json'
 
 const config: NuxtConfiguration = {
   mode: 'universal',
@@ -56,7 +56,7 @@ const config: NuxtConfiguration = {
       use: 'file-loader'
     }],
     extend(config, { isDev, isClient }) {
-      if (config.module === undefined) return;
+      if (config.module === undefined) return
       config.module.rules.push({
         test: /\.(ogg|mp3|wav|mpe?g)$/i,
         use: 'file-loader',
