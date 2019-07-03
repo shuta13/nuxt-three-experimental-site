@@ -1,9 +1,5 @@
+import pkg from './package.json'
 import NuxtConfiguration from '@nuxt/config'
-
-enum pkg {
-  name = 'nuxt-three-experimental-site',
-  description = 'nuxt &amp; three sample for practice'
-}
 
 const config: NuxtConfiguration = {
   mode: 'universal',

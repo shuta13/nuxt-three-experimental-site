@@ -7,46 +7,51 @@
       a(href="/soundglitch")(@mouseleave="removeFontColor")(@mouseover="hoveredSoundglitch").sound-glitch sound-glitch
 </template>
 
-<script>
-import TweenMax from 'gsap'
-
-export default {
-  data() {
-    return {
-      target: null
-    }
-  },
-  methods: {
-    // もうちょい短縮したい
-    hoveredAline() {
-      this.target = '.a-line'
-      this.changeFontColor()
-    },
-    hoveredDeepsea() {
-      this.target = '.deep-sea'
-      this.changeFontColor()
-    },
-    hoveredGlitch() {
-      this.target = '.glitch'
-      this.changeFontColor()
-    },
-    hoveredSoundglitch() {
-      this.target = '.sound-glitch'
-      this.changeFontColor()
-    },
-    changeFontColor() {
-      TweenMax.to(`${this.target}`, 0.25, {
-        color: 'rgb(255, 40, 40)'
-      })
-    },
-    removeFontColor() {
-      TweenMax.to(['.a-line', '.deep-sea', '.glitch', '.sound-glitch'], 0.25, {
-        color: '#fff'
-      })
-    }
-  }
-}
+<script lang="ts">
+import { Component, Vue, Prop } from 'vue-property-decorator'
 </script>
+
+
+// <script>
+// import TweenMax from 'gsap'
+
+// export default {
+//   data() {
+//     return {
+//       target: null
+//     }
+//   },
+//   methods: {
+//     // もうちょい短縮したい
+//     hoveredAline() {
+//       this.target = '.a-line'
+//       this.changeFontColor()
+//     },
+//     hoveredDeepsea() {
+//       this.target = '.deep-sea'
+//       this.changeFontColor()
+//     },
+//     hoveredGlitch() {
+//       this.target = '.glitch'
+//       this.changeFontColor()
+//     },
+//     hoveredSoundglitch() {
+//       this.target = '.sound-glitch'
+//       this.changeFontColor()
+//     },
+//     changeFontColor() {
+//       TweenMax.to(`${this.target}`, 0.25, {
+//         color: 'rgb(255, 40, 40)'
+//       })
+//     },
+//     removeFontColor() {
+//       TweenMax.to(['.a-line', '.deep-sea', '.glitch', '.sound-glitch'], 0.25, {
+//         color: '#fff'
+//       })
+//     }
+//   }
+// }
+// </script>
 
 <style lang="scss" scoped>
 * {
