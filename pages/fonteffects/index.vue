@@ -5,7 +5,7 @@
 
 <script>
 // import FontEffects from '~/components/FontEffects/01'
-import FontEffects from '~/components/FontEffects/02'
+import FontEffects from '~/components/FontEffects'
 
 export default {
   components: {

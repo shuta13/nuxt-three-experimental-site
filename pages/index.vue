@@ -1,133 +1,57 @@
 <template lang="pug">
   .container
     .link-wrap
-      a(href="/aline")(@mouseleave="removeFontColor")(@mouseover="hoveredAline").a-line a-line
       a(href="/deepsea")(@mouseleave="removeFontColor")(@mouseover="hoveredDeepsea").deep-sea deep-sea
       a(href="/glitch")(@mouseleave="removeFontColor")(@mouseover="hoveredGlitch").glitch glitch
       a(href="/soundglitch")(@mouseleave="removeFontColor")(@mouseover="hoveredSoundglitch").sound-glitch sound-glitch
+      a(href="/fonteffects")(@mouseleave="removeFontColor")(@mouseover="hoveredFontEffects").font-effects font-effects
 </template>
 
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+<script>
 import TweenMax from 'gsap'
 
-@Component
-class Top extends Vue {
-target: string
-hoveredAline() {
-  this.target = '.a-line'
-  this.changeFontColor()
+export default {
+  data() {
+    return {
+      target: null,
+      rmTargets: ['.a-line', '.deep-sea', '.glitch', '.sound-glitch', '.font-effects']
+    }
+  },
+  methods: {
+    // もうちょい短縮したい
+    hoveredAline() {
+      this.target = '.a-line'
+      this.changeFontColor()
+    },
+    hoveredDeepsea() {
+      this.target = '.deep-sea'
+      this.changeFontColor()
+    },
+    hoveredGlitch() {
+      this.target = '.glitch'
+      this.changeFontColor()
+    },
+    hoveredSoundglitch() {
+      this.target = '.sound-glitch'
+      this.changeFontColor()
+    },
+    hoveredFontEffects() {
+      this.target = '.font-effects'
+      this.changeFontColor()
+    },
+    changeFontColor() {
+      TweenMax.to(`${this.target}`, 0.25, {
+        color: 'rgb(255, 40, 40)'
+      })
+    },
+    removeFontColor() {
+      TweenMax.to(this.rmTargets, 0.25, {
+        color: '#fff'
+      })
+    }
+  }
 }
-hoveredDeepsea() {
-  this.target = '.deep-sea'
-  this.changeFontColor()
-}
-hoveredGlitch() {
-  this.target = '.glitch'
-  this.changeFontColor()
-}
-hoveredSoundglitch() {
-  this.target = '.sound-glitch'
-  this.changeFontColor()
-}
-changeFontColor() {
-  TweenMax.to(`${this.target}`, 0.25, {
-    color: 'rgb(255, 40, 40)'
-  })
-}
-removeFontColor() {
-  TweenMax.to(['.a-line', '.deep-sea', '.glitch', '.sound-glitch'], 0.25, {
-    color: '#fff'
-  })
-}
-}
-export default Top
-
-// Vue.extendベース
-// import Vue from 'vue'
-// import TweenMax from 'gsap'
-// interface Data {
-//   target: string
-// }
-// export default Vue.extend({
-//   data(): Data {
-//     return {
-//       target: ''
-//     }
-//   },
-//   methods: {
-//     // もうちょい短縮したい
-// hoveredAline() {
-//   this.target = '.a-line'
-//   this.changeFontColor()
-// },
-// hoveredDeepsea() {
-//   this.target = '.deep-sea'
-//   this.changeFontColor()
-// },
-// hoveredGlitch() {
-//   this.target = '.glitch'
-//   this.changeFontColor()
-// },
-// hoveredSoundglitch() {
-//   this.target = '.sound-glitch'
-//   this.changeFontColor()
-// },
-// changeFontColor() {
-//   TweenMax.to(`${this.target}`, 0.25, {
-//     color: 'rgb(255, 40, 40)'
-//   })
-// },
-// removeFontColor() {
-//   TweenMax.to(['.a-line', '.deep-sea', '.glitch', '.sound-glitch'], 0.25, {
-//     color: '#fff'
-//   })
-// }
-//   }
-// })
 </script>
-
-// かつてのJavaScriptベース
-// <script>
-// import TweenMax from 'gsap'
-
-// export default {
-  // data() {
-  //   return {
-  //     target: null
-  //   }
-  // },
-  // methods: {
-  //   // もうちょい短縮したい
-  //   hoveredAline() {
-  //     this.target = '.a-line'
-  //     this.changeFontColor()
-  //   },
-  //   hoveredDeepsea() {
-  //     this.target = '.deep-sea'
-  //     this.changeFontColor()
-  //   },
-  //   hoveredGlitch() {
-  //     this.target = '.glitch'
-  //     this.changeFontColor()
-  //   },
-  //   hoveredSoundglitch() {
-  //     this.target = '.sound-glitch'
-  //     this.changeFontColor()
-  //   },
-  //   changeFontColor() {
-  //     TweenMax.to(`${this.target}`, 0.25, {
-  //       color: 'rgb(255, 40, 40)'
-  //     })
-  //   },
-  //   removeFontColor() {
-  //     TweenMax.to(['.a-line', '.deep-sea', '.glitch', '.sound-glitch'], 0.25, {
-  //       color: '#fff'
-  //     })
-  //   }
-  // }
-// }
-// </script>
 
 <style lang="scss" scoped>
 * {
