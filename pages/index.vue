@@ -5,12 +5,17 @@
       a(href="/glitch")(@mouseleave="removeFontColor")(@mouseover="hoveredGlitch").glitch glitch
       a(href="/soundglitch")(@mouseleave="removeFontColor")(@mouseover="hoveredSoundglitch").sound-glitch sound-glitch
       a(href="/fonteffects")(@mouseleave="removeFontColor")(@mouseover="hoveredFontEffects").font-effects font-effects
+    app-blinder.blind
 </template>
 
 <script>
 import TweenMax from 'gsap'
+import AppBlinder from '~/components/AppBlinder.vue'
 
 export default {
+  components: {
+    AppBlinder
+  },
   data() {
     return {
       target: null,
@@ -65,6 +70,7 @@ export default {
 }
 
 .link-wrap {
+  position: absolute;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -79,5 +85,9 @@ a {
   font-size: 4vw;
   font-family: 'DM Sans';
   color: #fff;
+}
+
+.blind {
+  z-index: 999;
 }
 </style>
