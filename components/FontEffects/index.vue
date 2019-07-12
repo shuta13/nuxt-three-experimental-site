@@ -4,6 +4,9 @@
 
 <script>
 import * as THREE from 'three'
+import { RawShaderMaterial } from 'three'
+import vertexShader from './shader/vert.glsl'
+import fragmentShader from './shader/frag.glsl'
 
 export default {
   data() {
@@ -13,6 +16,7 @@ export default {
       renderer: null,
       material: null,
       mesh: null,
+      time: { type: 'f', value: 0.0 },
       started: false
     }
   },
@@ -60,8 +64,19 @@ export default {
       ctx.fillText('FUCK IT ALL', width / 2, height / 2)
       const texture = new THREE.CanvasTexture(canvas)
       texture.needsUpdate = false
-      this.material = new THREE.MeshBasicMaterial()
-      this.material.map = texture
+      // this.material = new THREE.MeshBasicMaterial()
+      // this.material.map = texture
+      this.material = new RawShaderMaterial({
+        uniforms: {
+          texture: { type: 't', value: texture },
+          time: this.time,
+          nScale: { type: 'fv', value: [3, 3] }
+        },
+        vertexShader: vertexShader,
+        fragmentShader: fragmentShader,
+        transparent: true
+      })
+      // BoxBufferGeometryの(x, y, z)のうちzは無視(0)
       this.mesh = new THREE.Mesh(new THREE.BoxBufferGeometry(160, 80), this.material)
       this.scene.add(this.mesh)
     },
@@ -72,6 +87,7 @@ export default {
       this.camera.aspect = window.innerWidth / window.innerHeight
     },
     appendElement() {
+      // 黒に統一
       this.renderer.domElement.style = 'background-color: #000'
       document.body.appendChild(this.renderer.domElement)
     },
@@ -85,6 +101,7 @@ export default {
       this.renderer.render(this.scene, this.camera)
       this.camera.updateProjectionMatrix()
       this.renderer.setSize(window.innerWidth, window.innerHeight)
+      this.time.value += 0.01
     }
   }
 }
