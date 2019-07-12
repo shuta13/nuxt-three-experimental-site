@@ -111,22 +111,22 @@ void main() {
     vec2 nScale
       - ここでは初期値は3.0
   */
-  float nx = uv.x * nScale.x;
-  float ny = uv.y * nScale.y;
-  float nz = time * 0.2;
+  float nx = uv.x * nScale.x * 0.5;
+  float ny = uv.y * nScale.y * 0.5;
+  float nz = time * 0.1;
   float n = snoise(vec3(nx, ny, nz));
   uv.y += 0.2 * n;
 
-  // vec4 color = texture2D(texture, uv);
+  vec4 color = texture2D(texture, uv);
 
   // rgbズレ
-  float rDiff = +0.003;
-  float gDiff = -0.0015;
-  float bDiff = -0.003;
-  float r = texture2D(texture, uv + vec2(rDiff, 0.0)).r;
-  float g = texture2D(texture, uv + vec2(gDiff, 0.0)).g;
-  float b = texture2D(texture, uv + vec2(bDiff, 0.0)).b;
-  vec4 color = vec4(r, g, b, 1.0);
+  // float rDiff = +0.003;
+  // float gDiff = -0.0015;
+  // float bDiff = -0.003;
+  // float r = texture2D(texture, uv + vec2(rDiff, 0.0)).r;
+  // float g = texture2D(texture, uv + vec2(gDiff, 0.0)).g;
+  // float b = texture2D(texture, uv + vec2(bDiff, 0.0)).b;
+  // vec4 color = vec4(r, g, b, 1.0);
 
   gl_FragColor = color;
 }

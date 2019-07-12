@@ -57,11 +57,11 @@ export default {
       canvas.width = width
       canvas.height = height
       const ctx = canvas.getContext('2d')
-      ctx.font = 'Bold 200px Ubuntu'
+      ctx.font = '600px Noto Serif JP'
       ctx.textAlign = 'center'
       ctx.textBaseline = 'middle'
       ctx.fillStyle = 'rgba(255, 255, 255, 1.0)'
-      ctx.fillText('FUCK IT ALL', width / 2, height / 2)
+      ctx.fillText('虚ろ', width / 2, height / 2)
       const texture = new THREE.CanvasTexture(canvas)
       texture.needsUpdate = false
       // this.material = new THREE.MeshBasicMaterial()
