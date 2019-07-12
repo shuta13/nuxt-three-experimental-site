@@ -1,5 +1,5 @@
 <template lang="pug">
-  canvas#canvas(ref="canvas")
+  #canvas(ref="canvas")
 </template>
 
 <script>
@@ -35,7 +35,7 @@ export default {
         1000
       )
       this.renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
-      this.renderer.setClearColor(0x000000, 0.2)
+      this.renderer.setClearColor(0x000000, 1)
       this.renderer.setSize(window.innerWidth, window.innerHeight)
     },
     configScene() {
@@ -53,16 +53,16 @@ export default {
       canvas.width = width
       canvas.height = height
       const ctx = canvas.getContext('2d')
-      ctx.font = '200px Ubuntu'
+      ctx.font = 'Bold 200px Ubuntu'
       ctx.textAlign = 'center'
       ctx.textBaseline = 'middle'
-      ctx.fillStyle = 'rgba(255, 0, 0, 1.0)'
-      ctx.fillText('HELLO', width / 2, height / 2)
+      ctx.fillStyle = 'rgba(255, 255, 255, 1.0)'
+      ctx.fillText('FUCK IT ALL', width / 2, height / 2)
       const texture = new THREE.CanvasTexture(canvas)
       texture.needsUpdate = false
       this.material = new THREE.MeshBasicMaterial()
       this.material.map = texture
-      this.mesh = new THREE.Mesh(new THREE.BoxBufferGeometry(20, 20, 20), this.material)
+      this.mesh = new THREE.Mesh(new THREE.BoxBufferGeometry(160, 80), this.material)
       this.scene.add(this.mesh)
     },
     bindWindowEvents() {
@@ -72,6 +72,7 @@ export default {
       this.camera.aspect = window.innerWidth / window.innerHeight
     },
     appendElement() {
+      this.renderer.domElement.style = 'background-color: #000'
       document.body.appendChild(this.renderer.domElement)
     },
     startScene() {
@@ -90,7 +91,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#canvas {
-  position: absolute;
-}
 </style>
