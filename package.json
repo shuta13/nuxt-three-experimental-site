@@ -24,6 +24,7 @@
     "nuxt": "2.8.1",
     "nuxt-property-decorator": "^2.3.0",
     "pixi.js": "5.0.4",
+    "postprocessing": "^6.5.1",
     "pug": "2.0.4",
     "pug-loader": "2.4.0",
     "pug-plain-loader": "1.0.0",
