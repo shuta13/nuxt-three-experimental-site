@@ -4,7 +4,6 @@
 
 <script>
 import * as THREE from 'three'
-import { RawShaderMaterial } from 'three'
 import vertexShader from './shader/vert.glsl'
 import fragmentShader from './shader/frag.glsl'
 
@@ -66,7 +65,7 @@ export default {
       texture.needsUpdate = false
       // this.material = new THREE.MeshBasicMaterial()
       // this.material.map = texture
-      this.material = new RawShaderMaterial({
+      this.material = new THREE.RawShaderMaterial({
         uniforms: {
           texture: { type: 't', value: texture },
           time: this.time,

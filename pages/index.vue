@@ -5,6 +5,7 @@
       a(href="/glitch")(@mouseleave="removeFontColor")(@mouseover="hoveredGlitch").glitch glitch
       a(href="/soundglitch")(@mouseleave="removeFontColor")(@mouseover="hoveredSoundglitch").sound-glitch sound-glitch
       a(href="/fonteffects")(@mouseleave="removeFontColor")(@mouseover="hoveredFontEffects").font-effects font-effects
+      a(href="/objects-motion")(@mouseleave="removeFontColor")(@mouseover="hoveredObjectsMotion").objects-motion objects-motion
     app-blinder.blind
 </template>
 
@@ -19,7 +20,7 @@ export default {
   data() {
     return {
       target: null,
-      rmTargets: ['.a-line', '.deep-sea', '.glitch', '.sound-glitch', '.font-effects']
+      rmTargets: ['.a-line', '.deep-sea', '.glitch', '.sound-glitch', '.font-effects', '.objects-motion']
     }
   },
   methods: {
@@ -42,6 +43,10 @@ export default {
     },
     hoveredFontEffects() {
       this.target = '.font-effects'
+      this.changeFontColor()
+    },
+    hoveredObjectsMotion() {
+      this.target = '.objects-motion'
       this.changeFontColor()
     },
     changeFontColor() {
