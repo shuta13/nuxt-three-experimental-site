@@ -19,14 +19,15 @@ export default {
       payload: 0,
       objectX: -30,
       objectY: -20,
+      color: null,
       stdMtr: null,
       mshBox: null,
       mshSphere: null,
       mshKnot: null,
       composer: null,
       params: {
-        bloomStrength: 1.5,
-        bloomThreshold: 0,
+        bloomStrength: 2,
+        bloomThreshold: 10,
         bloomRadius: 0
       }
     }
@@ -36,7 +37,7 @@ export default {
     this.configScene()
     this.positionCamera()
     this.createObjects()
-    this.createPostProcess()
+    // this.createPostProcess()
     this.bindWindowEvents()
     this.appendElement()
     this.startScene()
@@ -68,11 +69,17 @@ export default {
     },
     // 処理
     createObjects() {
-      this.stdMtr = new THREE.MeshStandardMaterial({ color: 'rgb(100, 10, 10)', roughness: 0, metalness: 0 })
+      const red = new THREE.Color('rgb(245, 40, 40)')
+      const green = new THREE.Color('rgb(-160, -600, -600')
+      const blue = new THREE.Color('rgb(40, 40, 245)')
       this.obj = new THREE.Object3D()
       this.scene.add(this.obj)
       for (let i = 0; i < 30; i++) {
-        const geoBox = new THREE.BoxBufferGeometry(Math.PI, Math.sqrt(2), Math.E)
+        if (i % 2 === 0) this.color = red
+        else if (i % 3 === 0) this.color = green
+        else this.color = blue
+        this.stdMtr = new THREE.MeshStandardMaterial({ color: this.color, roughness: 0, metalness: 0, wireframe: true })
+        const geoBox = new THREE.BoxBufferGeometry(Math.PI * Math.random(), Math.sqrt(2) * Math.random(), Math.E)
         this.mshBox = new THREE.Mesh(geoBox, this.stdMtr)
         this.mshBox.position.x = this.objectX
         this.mshBox.position.y = this.objectY
@@ -83,7 +90,7 @@ export default {
         this.mshBox.receiveShadow = true
         this.obj.add(this.mshBox)
 
-        const geoSphere = new THREE.SphereBufferGeometry(1.5, 32, 32)
+        const geoSphere = new THREE.SphereBufferGeometry(0.1 + i * 0.04, 32, 32)
         this.mshSphere = new THREE.Mesh(geoSphere, this.stdMtr)
         this.mshSphere.position.x = this.objectX - 5
         this.mshSphere.position.y = this.objectY
@@ -95,6 +102,8 @@ export default {
         this.mshKnot = new THREE.Mesh(geoKnot, this.stdMtr)
         this.mshKnot.position.x = this.objectX + 5
         this.mshKnot.position.y = this.objectY
+        this.mshKnot.rotation.x = 20 + i * 0.1
+        this.mshKnot.rotation.z = 20 + i * 0.1
         this.mshKnot.castShadow = true
         this.mshKnot.receiveShadow = true
         this.obj.add(this.mshKnot)
@@ -106,18 +115,18 @@ export default {
         }
       }
     },
-    createPostProcess() {
-      this.composer = new EffectComposer(this.renderer)
-      const effectPass = new EffectPass(this.camera, new BloomEffect())
-      effectPass.renderToScreen = true
-      this.composer.addPass(new RenderPass(this.scene, this.camera))
-      this.composer.addPass(effectPass)
-      // const bloomPass = new BloomEffect()
-      // bloomPass.threshold = this.params.bloomThreshold
-      // bloomPass.strength = this.params.bloomStrength
-      // bloomPass.radius = this.params.bloomRadius
-      // this.composer.addPass(bloomPass)
-    },
+    // createPostProcess() {
+    //   this.composer = new EffectComposer(this.renderer)
+    //   const bloomPass = new BloomEffect()
+    //   bloomPass.threshold = this.params.bloomThreshold
+    //   bloomPass.strength = this.params.bloomStrength
+    //   bloomPass.radius = this.params.bloomRadius
+    //   this.composer.addPass(bloomPass)
+    //   const effectPass = new EffectPass(this.camera, bloomPass)
+    //   effectPass.renderToScreen = true
+    //   this.composer.addPass(new RenderPass(this.scene, this.camera))
+    //   this.composer.addPass(effectPass)
+    // },
     bindWindowEvents() {
       window.addEventListener('resize', this.handleWindowResize, false)
     },
@@ -134,8 +143,8 @@ export default {
     },
     renderScene() {
       requestAnimationFrame(this.renderScene)
-      // this.renderer.render(this.scene, this.camera)
-      this.composer.render()
+      this.renderer.render(this.scene, this.camera)
+      // this.composer.render()
       this.camera.updateProjectionMatrix()
       this.renderer.setSize(window.innerWidth, window.innerHeight)
       this.lightAngle -= 0.04
