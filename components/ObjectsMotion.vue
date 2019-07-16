@@ -1,10 +1,9 @@
 <template lang="pug">
-
 </template>
 
 <script>
 import * as THREE from 'three'
-import { EffectComposer, RenderPass, GlitchPass, MaskPass, ShaderPass, CopyShader, DigitalGlitch, BloomPass, UnrealBloomPass } from 'three-full' // eslint-disable-line
+import { BloomEffect, EffectComposer, EffectPass, RenderPass } from 'postprocessing' // eslint-disable-line
 
 export default {
   data() {
@@ -109,14 +108,15 @@ export default {
     },
     createPostProcess() {
       this.composer = new EffectComposer(this.renderer)
-      const renderPass = new RenderPass(this.scene, this.camera)
-      this.composer.addPass(renderPass)
-
-      const bloomPass = new UnrealBloomPass()
-      bloomPass.threshold = this.params.bloomThreshold
-      bloomPass.strength = this.params.bloomStrength
-      bloomPass.radius = this.params.bloomRadius
-      this.composer.addPass(bloomPass)
+      const effectPass = new EffectPass(this.camera, new BloomEffect())
+      effectPass.renderToScreen = true
+      this.composer.addPass(new RenderPass(this.scene, this.camera))
+      this.composer.addPass(effectPass)
+      // const bloomPass = new BloomEffect()
+      // bloomPass.threshold = this.params.bloomThreshold
+      // bloomPass.strength = this.params.bloomStrength
+      // bloomPass.radius = this.params.bloomRadius
+      // this.composer.addPass(bloomPass)
     },
     bindWindowEvents() {
       window.addEventListener('resize', this.handleWindowResize, false)
@@ -134,12 +134,10 @@ export default {
     },
     renderScene() {
       requestAnimationFrame(this.renderScene)
-      this.renderer.render(this.scene, this.camera)
+      // this.renderer.render(this.scene, this.camera)
+      this.composer.render()
       this.camera.updateProjectionMatrix()
       this.renderer.setSize(window.innerWidth, window.innerHeight)
-      // this.composer.render(this.scene, this.camera)
-      this.composer.setSize(window.innerWidth, window.innerHeight)
-
       this.lightAngle -= 0.04
       this.spotLight.position.x = 8 * Math.sin(this.lightAngle)
       this.spotLight.position.y = 8 * Math.cos(this.lightAngle)
