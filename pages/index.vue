@@ -1,66 +1,26 @@
 <template lang="pug">
   .container
     .link-wrap
-      a(href="/deepsea")(@mouseleave="removeFontColor")(@mouseover="hoveredDeepsea").deep-sea deep-sea
-      a(href="/glitch")(@mouseleave="removeFontColor")(@mouseover="hoveredGlitch").glitch glitch
-      a(href="/soundglitch")(@mouseleave="removeFontColor")(@mouseover="hoveredSoundglitch").sound-glitch sound-glitch
-      a(href="/fonteffects")(@mouseleave="removeFontColor")(@mouseover="hoveredFontEffects").font-effects font-effects
-      a(href="/objects-motion")(@mouseleave="removeFontColor")(@mouseover="hoveredObjectsMotion").objects-motion objects-motion
+      a(href="/deepsea") deep-sea
+      a(href="/glitch") glitch
+      a(href="/soundglitch") sound-glitch
+      a(href="/fonteffects") font-effects
+      a(href="/objects-motion") objects-motion
+      a(href="/gltf-object") gltf-object
     app-blinder.blind
 </template>
 
-<script>
-import TweenMax from 'gsap'
+<script lang="ts">
+import { Component, Vue } from 'nuxt-property-decorator'
 import AppBlinder from '~/components/AppBlinder.vue'
 
-export default {
+@Component({
   components: {
     AppBlinder
-  },
-  data() {
-    return {
-      target: null,
-      rmTargets: ['.a-line', '.deep-sea', '.glitch', '.sound-glitch', '.font-effects', '.objects-motion']
-    }
-  },
-  methods: {
-    // もうちょい短縮したい
-    hoveredAline() {
-      this.target = '.a-line'
-      this.changeFontColor()
-    },
-    hoveredDeepsea() {
-      this.target = '.deep-sea'
-      this.changeFontColor()
-    },
-    hoveredGlitch() {
-      this.target = '.glitch'
-      this.changeFontColor()
-    },
-    hoveredSoundglitch() {
-      this.target = '.sound-glitch'
-      this.changeFontColor()
-    },
-    hoveredFontEffects() {
-      this.target = '.font-effects'
-      this.changeFontColor()
-    },
-    hoveredObjectsMotion() {
-      this.target = '.objects-motion'
-      this.changeFontColor()
-    },
-    changeFontColor() {
-      TweenMax.to(`${this.target}`, 0.25, {
-        color: 'rgb(255, 40, 40)'
-      })
-    },
-    removeFontColor() {
-      TweenMax.to(this.rmTargets, 0.25, {
-        color: '#fff'
-      })
-    }
   }
-}
+})
+class TopClass extends Vue {}
+export default TopClass
 </script>
 
 <style lang="scss" scoped>
@@ -90,6 +50,11 @@ a {
   font-size: 4vw;
   font-family: 'DM Sans';
   color: #fff;
+  transition: color .2s;
+}
+
+a:hover {
+  color: rgb(255, 40, 40);
 }
 
 .blind {

@@ -1,19 +1,19 @@
 <template lang="pug">
-  objects-motion
+  gltf-object
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import ObjectsMotion from '~/components/ObjectsMotion.vue'
+import GltfObject from '~/components/GltfObject.vue'
 
 @Component({
   components: {
-    ObjectsMotion
+    GltfObject
   }
 })
-class ObjectsMotionClass extends Vue {
+class GltfObjectClass extends Vue {
 }
-export default ObjectsMotionClass
+export default GltfObjectClass
 </script>
 
 <style lang="scss" scoped>
