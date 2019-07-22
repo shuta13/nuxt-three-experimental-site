@@ -1,10 +1,9 @@
 <template lang="pug">
   .container
-    //- .item
-    //-   a hoge
-    .item
-      .rect
-      span.piyo(@mouseover="over")(@mouseleave="left") piyo
+    .item-wrap(v-for="number in numbers")(:key="number")
+      .item
+        .rect
+        span.piyo(@mouseover="over")(@mouseleave="left") {{ number }}
 </template>
 
 <script lang="ts">
@@ -12,6 +11,7 @@ import { Component, Vue } from 'nuxt-property-decorator'
 import { TweenMax, Power4 } from 'gsap'
 @Component
 class UiExperiment extends Vue {
+  numbers = [1, 2, 3, 4]
   over() {
     TweenMax.to('.rect', 0, {
       ease: Power4.easeInOut,
@@ -35,16 +35,22 @@ export default UiExperiment
 
 <style lang="scss" scoped>
 .container {
+  background-color: rgba(200, 200, 200, 1);
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+.item-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200vw;
+}
 .item {
   position: absolute;
   overflow: hidden;
-  margin: 1vw 1vh;
   width: 200px;
   height: 90px;
   cursor: pointer;
@@ -71,7 +77,7 @@ export default UiExperiment
   transition: color 0.8s cubic-bezier(.45, .2, .5, 1);
 }
 .piyo:hover {
-  color: rgba(240, 240, 240, 1)
+  color: rgba(200, 200, 200, 1);
 }
 a {
   font-family: 'Rajdhani';
