@@ -6,7 +6,8 @@
       a(href="/soundglitch") sound-glitch
       a(href="/fonteffects") font-effects
       a(href="/objects-motion") objects-motion
-      a(href="/gltf-object") gltf-object
+      //- a(href="/gltf-object") gltf-object
+      a(href="/ui-experiments") ui-experiments
     app-blinder.blind
 </template>
 

@@ -4,6 +4,8 @@
 
 <script>
 import * as THREE from 'three'
+// DRACOLoaderのエラーが出る
+// import { GLTFLoader } from 'three-gltf-loader'
 
 export default {
   data() {
@@ -32,7 +34,7 @@ export default {
         1000
       )
       this.renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
-      this.renderer.setClearColor(0xffffff, 1)
+      this.renderer.setClearColor(0x000000, 1)
       this.renderer.setSize(window.innerWidth, window.innerHeight)
     },
     configScene() {
@@ -43,6 +45,15 @@ export default {
       this.camera.position.set(0, 0, 100)
     },
     // 処理
+    // setGltf() {
+    //   const gltfLoader = new GLTFLoader()
+    //   const url = 'http://localhost:3000/3DModel/cesar_-_louvre_museum/scene.gltf'
+    //   gltfLoader.load(url, (gltf) => {
+    //     const model = gltf.scene
+    //     this.scene.add(model)
+    //   })
+    //   this.renderer.gammaOutput = true
+    // },
     bindWindowEvents() {
       window.addEventListener('resize', this.handleWindowResize, false)
     },

@@ -10156,6 +10156,11 @@ three-full@17.1.0:
   resolved "https://registry.yarnpkg.com/three-full/-/three-full-17.1.0.tgz#ecab0ff39c76c94530cda50d40fb9d66b2141701"
   integrity sha512-rVZczsQvi3FT7dgbnanwGP0TRXT0DZd25SYqqsc26PJpmAaEb09I/hAWp+i1lI2GzbT0tM/4kSWlkVgj4XycPw==
 
+three-gltf-loader@^1.106.0:
+  version "1.106.0"
+  resolved "https://registry.yarnpkg.com/three-gltf-loader/-/three-gltf-loader-1.106.0.tgz#e79fc0b011f1eac4c3aeb0122f91d46e009482b4"
+  integrity sha512-2SUmtj2EiX4IQeu9eP/axRXGjc6t6v6OiJa5ciFTV6x4vh0/eAgzKxtFPMCxNs2zyGLjazeug0OW/badnbLgtg==
+
 three@*:
   version "0.106.2"
   resolved "https://registry.yarnpkg.com/three/-/three-0.106.2.tgz#6752d304c470e4df230944ecd45325e7bf79e1f8"
