@@ -68,7 +68,7 @@ export default UiExperiment
   font-family: 'Rajdhani';
   font-size: 4rem;
   color: rgba(40, 40, 40, 1);
-  transition: color 0.6s cubic-bezier(0.4, 0.2, 0.4, 1);
+  transition: color 0.8s cubic-bezier(.45, .2, .5, 1);
 }
 .piyo:hover {
   color: rgba(240, 240, 240, 1)
