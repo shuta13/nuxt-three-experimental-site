@@ -11,6 +11,12 @@ import { Component, Vue } from 'nuxt-property-decorator'
 import { TweenMax, Power4 } from 'gsap'
 @Component
 class UiExperiment extends Vue {
+  sleep = msec => new Promise(resolve => setTimeout(resolve, msec))
+  async mounted() {
+    this.over()
+    await this.sleep(1000)
+    this.left()
+  }
   numbers = [1, 2, 3, 4]
   over() {
     TweenMax.to('.rect', 0, {
