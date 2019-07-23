@@ -2,40 +2,6 @@
 👉 https://did0es-experimental-site.netlify.com
 ### 参考
 https://github.com/tetreault/nuxt-threejs-webgl-experiments
-### ディレクトリ構成(ほぼnuxtまんま)
-```text
-├── README.md
-├── assets
-│   └── README.md
-├── components
-│   ├── Hoge.vue // threejsのコード入りコンポーネント
-│   ├── Logo.vue
-│   └── README.md
-├── jest.config.js
-├── layouts
-│   ├── README.md
-│   └── default.vue
-├── middleware
-│   └── README.md
-├── nuxt.config.js
-├── package-lock.json
-├── package.json
-├── pages
-│   ├── README.md
-│   // ディレクトリ名=routeになるように切る
-│   ├── demo
-│   │   └── index.vue // components内を読み込む
-│   └── index.vue
-├── plugins
-│   └── README.md
-├── static
-│   ├── README.md
-│   └── favicon.ico
-├── store
-│   └── README.md
-└── test
-    └── Logo.spec.js
-```
 ### npm scripts
 ```text
 "scripts": {

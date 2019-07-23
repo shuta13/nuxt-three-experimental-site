@@ -14,7 +14,7 @@ class UiExperiment extends Vue {
   sleep = msec => new Promise(resolve => setTimeout(resolve, msec))
   async mounted() {
     this.over()
-    await this.sleep(1000)
+    await this.sleep(960)
     this.left()
   }
   numbers = [1, 2, 3, 4]
