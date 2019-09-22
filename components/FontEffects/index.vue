@@ -19,6 +19,14 @@ export default {
       started: false
     }
   },
+
+  // フォント個別で読み込み
+  head: {
+    link: [
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Noto+Serif+JP&display=swap' }
+    ]
+  },
+
   mounted() {
     this.init()
     this.configScene()
@@ -28,6 +36,7 @@ export default {
     this.appendElement()
     this.startScene()
   },
+
   methods: {
     init() {
       this.scene = new THREE.Scene()
@@ -41,16 +50,19 @@ export default {
       this.renderer.setClearColor(0x000000, 1)
       this.renderer.setSize(window.innerWidth, window.innerHeight)
     },
+
     configScene() {
       const light = new THREE.AmbientLight(0xffffff)
       this.scene.add(light)
     },
+
     positionCamera() {
       this.camera.position.set(0, 0, 100)
     },
+
     // 処理
-    createTexture() {
-      const canvas = document.createElement('canvas')
+    async createTexture() {
+      const canvas = await document.createElement('canvas')
       const width = 2048
       const height = 1024
       canvas.width = width
@@ -60,7 +72,7 @@ export default {
       ctx.textAlign = 'center'
       ctx.textBaseline = 'middle'
       ctx.fillStyle = 'rgba(255, 255, 255, 1.0)'
-      ctx.fillText('虚ろ', width / 2, height / 2)
+      ctx.fillText('虚無', width / 2, height / 2)
       const texture = new THREE.CanvasTexture(canvas)
       texture.needsUpdate = false
       // this.material = new THREE.MeshBasicMaterial()
@@ -79,22 +91,27 @@ export default {
       this.mesh = new THREE.Mesh(new THREE.BoxBufferGeometry(160, 80), this.material)
       this.scene.add(this.mesh)
     },
+
     bindWindowEvents() {
       window.addEventListener('resize', this.handleWindowResize, false)
     },
+
     handleWindowResize() {
       this.camera.aspect = window.innerWidth / window.innerHeight
     },
+
     appendElement() {
       // 黒に統一
-      this.renderer.domElement.style = 'background-color: #000'
+      // this.renderer.domElement.style = 'background-color: #000'
       document.body.appendChild(this.renderer.domElement)
     },
+
     startScene() {
       if (this.started) return
       this.renderScene()
       this.started = !this.started
     },
+
     renderScene() {
       requestAnimationFrame(this.renderScene)
       this.renderer.render(this.scene, this.camera)

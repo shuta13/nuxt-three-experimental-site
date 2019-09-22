@@ -17,7 +17,6 @@ const config: NuxtConfiguration = {
       { rel: 'icon', type: 'image/x-icon', href: 'https://s.gravatar.com/avatar/5297a6f1a0d91b1ef43b75b2915a0628?s=80' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=DM+Sans&display=swap' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Ubuntu&display=swap' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Noto+Serif+JP&display=swap' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Rajdhani&display=swap' }
     ]
   },
