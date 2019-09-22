@@ -20,18 +20,21 @@ export default {
     }
   },
 
-  // フォント個別で読み込み
-  head: {
-    link: [
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Noto+Serif+JP&display=swap' }
-    ]
-  },
+  // // フォント個別で読み込み
+  // head: {
+  //   link: [
+  //     { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Noto+Serif+JP&display=swap' }
+  //   ]
+  // },
 
   mounted() {
     this.init()
     this.configScene()
     this.positionCamera()
-    this.createTexture()
+    // 泣いています、今
+    setTimeout(() => {
+      this.createTexture()
+    }, 2400)
     this.bindWindowEvents()
     this.appendElement()
     this.startScene()
