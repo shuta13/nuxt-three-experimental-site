@@ -34,7 +34,7 @@ export default {
     // 泣いています、今
     setTimeout(() => {
       this.createTexture()
-    }, 2400)
+    }, 3000)
     this.bindWindowEvents()
     this.appendElement()
     this.startScene()
