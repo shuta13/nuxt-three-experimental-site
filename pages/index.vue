@@ -3,7 +3,6 @@
     .link-wrap
       a(href="/deepsea") deep-sea
       a(href="/glitch") glitch
-      a(href="/soundglitch") sound-glitch
       a(href="/fonteffects") font-effects
       a(href="/objects-motion") objects-motion
       a(href="/ui-experiments") ui-experiments

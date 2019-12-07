@@ -75,7 +75,7 @@ export default {
       ctx.textAlign = 'center'
       ctx.textBaseline = 'middle'
       ctx.fillStyle = 'rgba(255, 255, 255, 1.0)'
-      ctx.fillText('虚無', width / 2, height / 2)
+      ctx.fillText('VOID', width / 2, height / 2)
       const texture = new THREE.CanvasTexture(canvas)
       texture.needsUpdate = false
       // this.material = new THREE.MeshBasicMaterial()
