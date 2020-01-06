@@ -1,3 +1,4 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5cf80e4c-0dab-48ff-acd9-9a332d0de5dd/deploy-status)](https://app.netlify.com/sites/did0es-experimental-site/deploys)
 # nuxt-three-sample
 👉 https://did0es-experimental-site.netlify.com
 ### 参考
