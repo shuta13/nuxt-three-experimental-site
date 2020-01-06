@@ -25,7 +25,8 @@ export default {
       glitchPass: null,
       customPass: null,
       effectGlitch: null,
-      started: false
+      started: false,
+      mousePosition: 0
     }
   },
   mounted() {
@@ -34,6 +35,7 @@ export default {
     this.positionCamera()
     this.bindWindowEvents()
     this.$refs.canvas.appendChild(this.renderer.domElement)
+    this.doAddMouseHandling()
     this.startScene()
   },
   methods: {
@@ -94,7 +96,7 @@ export default {
       
       this.effectGlitch = new GlitchPass(64)
       // trueになるとワイルドになる
-      // this.effectGlitch.goWild = true
+      this.effectGlitch.goWild = false
       this.effectGlitch.renderToScreen = true
 
       this.composer.addPass(this.effectGlitch)
@@ -122,12 +124,28 @@ export default {
       window.addEventListener('resize', this.handleWindowResize, false)
     },
 
+    doAddMouseHandling() {
+      window.addEventListener('mousemove', this.getMousePos)
+    },
+
+    getMousePos(e) {
+      console.log(e.clientX, e.clientY)
+      let pos = e.clientX + e.clientY
+      if (this.mousePosition < pos || this.mousePosition > pos) {
+        this.mousePosition = pos
+        this.effectGlitch.goWild = true
+      } else this.effectGlitch.goWild = false
+    },
+
     handleWindowResize() {
       this.camera.aspect = window.innerWidth / window.innerHeight
       this.camera.updateProjectionMatrix()
       this.renderer.setSize(window.innerWidth, window.innerHeight)
       this.composer.setSize(window.innerWidth, window.innerHeight)
     }
+  },
+  destroyed() {
+    window.removeEventListener('mousemove', this.getMousePos)
   }
 }
 </script>
