@@ -28,7 +28,7 @@
     "nuxt": "2.8.1",
     "nuxt-fontawesome": "^0.4.0",
     "nuxt-property-decorator": "^2.3.0",
-    "pixi.js": "5.0.4",
+    "pixi.js": "5.2.1",
     "postprocessing": "^6.5.1",
     "pug": "2.0.4",
     "pug-loader": "2.4.0",
