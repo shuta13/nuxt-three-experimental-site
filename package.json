@@ -34,7 +34,7 @@
     "pug-loader": "2.4.0",
     "pug-plain-loader": "1.0.0",
     "sass-loader": "7.1.0",
-    "three": "0.105.2",
+    "three": "0.114.0",
     "three-full": "17.1.0",
     "three-gltf-loader": "^1.106.0",
     "ts-node": "8.3.0"
